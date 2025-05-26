@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NewsHub - Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        transition: background-color 0.3s, color 0.3s;
+      }
+      .featured-img {
+        height: 400px;
+        object-fit: cover;
+      }
+      .article-img {
+        height: 200px;
+        object-fit: cover;
+      }
+      .carousel-img {
+        height: 500px;
+        object-fit: cover;
+      }
+      .carousel-caption {
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 5px;
+      }
+      .footer {
+        background-color: #f8f9fa;
+        padding: 30px 0;
+      }
+      .dark-mode {
+        background-color: #1a1a1a;
+        color: #ffffff;
+      }
+      .dark-mode .navbar-light {
+        background-color: #2c2c2c !important;
+      }
+      .dark-mode .footer {
+        background-color: #2c2c2c;
+      }
+      .dark-mode .card {
+        background-color: #333333;
+        color: #ffffff;
+      }
+      .dark-mode .btn-outline-primary {
+        color: #ffffff;
+        border-color: #ffffff;
+      }
+      .dark-mode .list-group-item {
+        background-color: #333333;
+        color: #ffffff;
+      }
+      .dark-mode .list-group-item a {
+        color: #ffffff;
+      }
+      .dark-mode .carousel-caption {
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .navbar-nav .nav-link.active {
+        font-weight: bold;
+        border-bottom: 2px solid #007bff;
+      }
+      .news-ticker {
+        background-color: #dc3545;
+        color: white;
+        padding: 10px 0;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .news-ticker span {
+        display: inline-block;
+        padding-left: 100%;
+        animation: ticker 20s linear infinite;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .bookmark-btn {
+        margin-left: 10px;
+      }
+      .share-btn {
+        margin-left: 10px;
+      }
+      .bookmarked {
+        color: #ffc107;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- News Ticker -->
+    <div class="news-ticker">
+      <span
+        >Breaking News: Global markets soar | New tech breakthrough announced | Sports finals results...</span
+      >
+    </div>
+
+    <!-- Header -->
+    <header class="bg-dark text-white py-3">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h3">NewsEveryday</h1>
+        <div>
+          <form class="d-flex" role="search" id="searchForm">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search news..."
+              aria-label="Search"
+              id="searchInput"
+            />
+            <button class="btn btn-outline-light" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+          <button class="btn btn-outline-light mt-2" id="darkModeToggle">
+            Toggle Dark Mode
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" data-category="all">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-category="politics">Politics</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-category="business">Business</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-category="technology">Technology</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-category="sports">Sports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-category="entertainment">Entertainment</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-category="bookmarks">Bookmarks</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-4">
+      <!-- News Slider -->
+      <div id="newsCarousel" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1TkomunZDeJey7-o6mPI5Lie-D5JSgaEV0kxfLSs0_WD50XXeaYcA7brZJQNaSbt9ZI4&usqp=CAU"
+              class="d-block w-100 carousel-img"
+              alt="Featured Headline"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Featured Headline of the Day</h5>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                tincidunt, nunc at feugiat dictum...
+              </p>
+              <a
+                href="detail.html?title=Featured%20Headline%20of%20the%20Day&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQ1TkomunZDeJey7-o6mPI5Lie-D5JSgaEV0kxfLSs0_WD50XXeaYcA7brZJQNaSbt9ZI4%26usqp%3DCAU&author=Author&date=May%2022,%202025&content=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit.%20Aliquam%20tincidunt,%20nunc%20at%20feugiat%20dictum,%20urna%20metus%20porta%20metus,%20in%20posuere%20elit%20nulla%20non%20erat.%20Full%20article%20content%20goes%20here..."
+                class="btn btn-primary"
+                >Read More</a
+              >
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg"
+              class="d-block w-100 carousel-img"
+              alt="Tech Breakthrough"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Tech Breakthrough Announced</h5>
+              <p>New advancements in AI technology unveiled today...</p>
+              <a
+                href="detail.html?title=Tech%20Breakthrough%20Announced&image=https%3A%2F%2Ft4.ftcdn.net%2Fjpg%2F02%2F09%2F53%2F11%2F360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg&author=Jane%20Doe&date=May%2022,%202025&content=New%20advancements%20in%20AI%20technology%20unveiled%20today.%20This%20article%20explores%20the%20latest%20innovations%20in%20artificial%20intelligence..."
+                class="btn btn-primary"
+                >Read More</a
+              >
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://www.shutterstock.com/image-vector/breaking-news-background-business-technology-260nw-2168382807.jpg"
+              class="d-block w-100 carousel-img"
+              alt="Sports Finals Update"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Sports Finals Update</h5>
+              <p>Exciting moments from the championship games...</p>
+              <a
+                href="detail.html?title=Sports%20Finals%20Update&image=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Fbreaking-news-background-business-technology-260nw-2168382807.jpg&author=Alex%20Brown&date=May%2022,%202025&content=Exciting%20moments%20from%20the%20championship%20games.%20This%20article%20covers%20the%20latest%20sports%20finals%20results..."
+                class="btn btn-primary"
+                >Read More</a
+              >
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#newsCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#newsCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <!-- Featured News -->
+      <div class="row mb-4">
+        <div class="col-md-8">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1TkomunZDeJey7-o6mPI5Lie-D5JSgaEV0kxfLSs0_WD50XXeaYcA7brZJQNaSbt9ZI4&usqp=CAU"
+            class="img-fluid featured-img mb-3"
+            alt="Featured"
+          />
+          <h2>Featured Headline of the Day</h2>
+          <p class="text-muted">By Author • May 22, 2025</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            tincidunt, nunc at feugiat dictum, urna metus porta metus, in
+            posuere elit nulla non erat.
+          </p>
+          <div>
+            <a
+              href="detail.html?title=Featured%20Headline%20of%20the%20Day&image=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcQ1TkomunZDeJey7-o6mPI5Lie-D5JSgaEV0kxfLSs0_WD50XXeaYcA7brZJQNaSbt9ZI4%26usqp%3DCAU&author=Author&date=May%2022,%202025&content=Lorem%20ipsum%20dolor%20sit%20amet,%20consectetur%20adipiscing%20elit.%20Aliquam%20tincidunt,%20nunc%20at%20feugiat%20dictum,%20urna%20metus%20porta%20metus,%20in%20posuere%20elit%20nulla%20non%20erat.%20Full%20article%20content%20goes%20here..."
+              class="btn btn-primary"
+              >Read More</a
+            >
+            <button
+              class="btn btn-outline-warning bookmark-btn"
+              data-title="Featured Headline of the Day"
+              data-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1TkomunZDeJey7-o6mPI5Lie-D5JSgaEV0kxfLSs0_WD50XXeaYcA7brZJQNaSbt9ZI4&usqp=CAU"
+              data-author="Author"
+              data-date="May 22, 2025"
+              data-content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt, nunc at feugiat dictum, urna metus porta metus, in posuere elit nulla non erat. Full article content goes here..."
+            >
+              <i class="bi bi-bookmark"></i> Bookmark
+            </button>
+            <button
+              class="btn btn-outline-info share-btn"
+              data-title="Featured Headline of the Day"
+            >
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <h4>Trending News</h4>
+          <ul class="list-group" id="trendingNews">
+            <li class="list-group-item">
+              <a href="#">Breaking: Market hits record high</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">Election results update</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">Tech giant launches new AI</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">Sports finals tonight</a>
+            </li>
+            <li class="list-group-item">
+              <a href="#">Weather alert for the weekend</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bookmarks Section -->
+      <div class="row mb-4" id="bookmarksContainer" style="display: none;">
+        <h3 class="mb-3">Bookmarked Articles</h3>
+      </div>
+
+      <!-- Recent Articles -->
+      <div class="row" id="articlesContainer">
+        <h3 class="mb-3">Latest Articles</h3>
+        <div class="col-md-4 mb-4">
+          <div class="card" data-category="technology">
+            <img
+              src="https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg"
+              class="card-img-top article-img"
+              alt="News Title One"
+            />
+            <div class="card-body">
+              <h5 class="card-title">News Title One</h5>
+              <p class="card-text">Short summary of the news goes here...</p>
+              <div>
+                <a
+                  href="detail.html?title=News%20Title%20One&image=https%3A%2F%2Ft4.ftcdn.net%2Fjpg%2F02%2F09%2F53%2F11%2F360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg&author=John%20Doe&date=May%2022,%202025&content=Full%20content%20for%20News%20Title%20One.%20This%20is%20a%20detailed%20article%20about%20the%20latest%20technology%20trends..."
+                  class="btn btn-outline-primary btn-sm"
+                  >Read More</a
+                >
+                <button
+                  class="btn btn-outline-warning bookmark-btn"
+                  data-title="News Title One"
+                  data-image="https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg"
+                  data-author="John Doe"
+                  data-date="May 22, 2025"
+                  data-content="Full content for News Title One. This is a detailed article about the latest technology trends..."
+                >
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button
+                  class="btn btn-outline-info share-btn"
+                  data-title="News Title One"
+                >
+                  <i class="bi bi-share"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" data-category="politics">
+            <img
+              src="https://st3.depositphotos.com/11245678/36021/i/450/depositphotos_360215620-stock-photo-breaking-news-rendering-virtual-set.jpg"
+              class="card-img-top article-img"
+              alt="News Title Two"
+            />
+            <div class="card-body">
+              <h5 class="card-title">News Title Two</h5>
+              <p class="card-text">Short summary of the news goes here...</p>
+              <div>
+                <a
+                  href="detail.html?title=News%20Title%20Two&image=https%3A%2F%2Fst3.depositphotos.com%2F11245678%2F36021%2Fi%2F450%2Fdepositphotos_360215620-stock-photo-breaking-news-rendering-virtual-set.jpg&author=Jane%20Smith&date=May%2022,%202025&content=Full%20content%20for%20News%20Title%20Two.%20This%20article%20discusses%20recent%20political%20developments..."
+                  class="btn btn-outline-primary btn-sm"
+                  >Read More</a
+                >
+                <button
+                  class="btn btn-outline-warning bookmark-btn"
+                  data-title="News Title Two"
+                  data-image="https://st3.depositphotos.com/11245678/36021/i/450/depositphotos_360215620-stock-photo-breaking-news-rendering-virtual-set.jpg"
+                  data-author="Jane Smith"
+                  data-date="May 22, 2025"
+                  data-content="Full content for News Title Two. This article discusses recent political developments..."
+                >
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button
+                  class="btn btn-outline-info share-btn"
+                  data-title="News Title Two"
+                >
+                  <i class="bi bi-share"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card" data-category="sports">
+            <img
+              src="https://www.shutterstock.com/image-vector/breaking-news-background-business-technology-260nw-2168382807.jpg"
+              class="card-img-top article-img"
+              alt="News Title Three"
+            />
+            <div class="card-body">
+              <h5 class="card-title">News Title Three</h5>
+              <p class="card-text">Short summary of the news goes here...</p>
+              <div>
+                <a
+                  href="detail.html?title=News%20Title%20Three&image=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Fbreaking-news-background-business-technology-260nw-2168382807.jpg&author=Alex%20Brown&date=May%2022,%202025&content=Full%20content%20for%20News%20Title%20Three.%20This%20article%20covers%20the%20latest%20sports%20events..."
+                  class="btn btn-outline-primary btn-sm"
+                  >Read More</a
+                >
+                <button
+                  class="btn btn-outline-warning bookmark-btn"
+                  data-title="News Title Three"
+                  data-image="https://www.shutterstock.com/image-vector/breaking-news-background-business-technology-260nw-2168382807.jpg"
+                  data-author="Alex Brown"
+                  data-date="May 22, 2025"
+                  data-content="Full content for News Title Three. This article covers the latest sports events..."
+                >
+                  <i class="bi bi-bookmark"></i> Bookmark
+                </button>
+                <button
+                  class="btn btn-outline-info share-btn"
+                  data-title="News Title Three"
+                >
+                  <i class="bi bi-share"></i> Share
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-primary" id="loadMoreBtn">Load More Articles</button>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center text-muted">
+      <div class="container">
+        <p>© 2025 NewsHub. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a></p>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Mock data for additional articles
+      const mockArticles = [
+        {
+          title: "News Title Four",
+          summary: "Another exciting news summary goes here...",
+          image: "https://via.placeholder.com/300x200",
+          category: "business",
+          author: "Sarah Lee",
+          date: "May 22, 2025",
+          content: "Full content for News Title Four. This article explores the latest business trends...",
+        },
+        {
+          title: "News Title Five",
+          summary: "More news content to engage readers...",
+          image: "https://via.placeholder.com/300x200",
+          category: "entertainment",
+          author: "Mike Wilson",
+          date: "May 22, 2025",
+          content: "Full content for News Title Five. This article dives into entertainment news...",
+        },
+        {
+          title: "News Title Six",
+          summary: "Latest updates in the news world...",
+          image: "https://via.placeholder.com/300x200",
+          category: "technology",
+          author: "Emma Davis",
+          date: "May 22, 2025",
+          content: "Full content for News Title Six. This article covers new tech innovations...",
+        },
+      ];
+
+      // Load bookmarks from localStorage
+      function loadBookmarks() {
+        const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+        const container = document.getElementById("bookmarksContainer");
+        container.innerHTML = "<h3 class='mb-3'>Bookmarked Articles</h3>";
+        if (bookmarks.length === 0) {
+          container.style.display = "none";
+          return;
+        }
+        container.style.display = "block";
+        bookmarks.forEach((article) => {
+          const articleElement = document.createElement("div");
+          articleElement.className = "col-md-4 mb-4";
+          articleElement.innerHTML = `
+            <div class="card" data-category="bookmarks">
+              <img src="${article.image}" class="card-img-top article-img" alt="${article.title}" />
+              <div class="card-body">
+                <h5 class="card-title">${article.title}</h5>
+                <p class="card-text">${article.summary || "No summary available."}</p>
+                <div>
+                  <a href="detail.html?title=${encodeURIComponent(article.title)}&image=${encodeURIComponent(article.image)}&author=${encodeURIComponent(article.author)}&date=${encodeURIComponent(article.date)}&content=${encodeURIComponent(article.content)}" class="btn btn-outline-primary btn-sm">Read More</a>
+                  <button class="btn btn-outline-warning bookmark-btn bookmarked" data-title="${article.title}" data-image="${article.image}" data-author="${article.author}" data-date="${article.date}" data-content="${article.content}">
+                    <i class="bi bi-bookmark-fill"></i> Bookmarked
+                  </button>
+                  <button class="btn btn-outline-info share-btn" data-title="${article.title}">
+                    <i class="bi bi-share"></i> Share
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          container.appendChild(articleElement);
+        });
+      }
+
+      // Bookmark functionality
+      function toggleBookmark(button) {
+        const article = {
+          title: button.dataset.title,
+          image: button.dataset.image,
+          author: button.dataset.author,
+          date: button.dataset.date,
+          content: button.dataset.content,
+          summary: button.parentElement.querySelector(".card-text")?.textContent || "",
+        };
+        let bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
+        const index = bookmarks.findIndex((b) => b.title === article.title);
+        if (index === -1) {
+          bookmarks.push(article);
+          button.classList.add("bookmarked");
+          button.innerHTML = '<i class="bi bi-bookmark-fill"></i> Bookmarked';
+        } else {
+          bookmarks.splice(index, 1);
+          button.classList.remove("bookmarked");
+          button.innerHTML = '<i class="bi bi-bookmark"></i> Bookmark';
+        }
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+        loadBookmarks();
+      }
+
+      // Share functionality
+      function shareArticle(title) {
+        const url = encodeURIComponent(window.location.href);
+        const shareText = encodeURIComponent(`Check out this article: ${title}`);
+        const twitterUrl = `https://x.com/intent/tweet?text=${shareText}&url=${url}`;
+        window.open(twitterUrl, "_blank");
+      }
+
+      // Search functionality
+      document.getElementById("searchForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const query = document.getElementById("searchInput").value.toLowerCase().trim();
+        const articles = document.querySelectorAll("#articlesContainer .card");
+        articles.forEach((article) => {
+          const title = article.querySelector(".card-title").textContent.toLowerCase();
+          const summary = article.querySelector(".card-text").textContent.toLowerCase();
+          if (title.includes(query) || summary.includes(query)) {
+            article.style.display = "block";
+          } else {
+            article.style.display = "none";
+          }
+        });
+      });
+
+      // Navbar category filtering
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          document.querySelector(".nav-link.active")?.classList.remove("active");
+          link.classList.add("active");
+          const category = link.dataset.category;
+          const articlesContainer = document.getElementById("articlesContainer");
+          const bookmarksContainer = document.getElementById("bookmarksContainer");
+          const articles = document.querySelectorAll("#articlesContainer .card");
+          if (category === "bookmarks") {
+            articlesContainer.style.display = "none";
+            bookmarksContainer.style.display = "block";
+          } else {
+            articlesContainer.style.display = "block";
+            bookmarksContainer.style.display = "none";
+            articles.forEach((article) => {
+              if (category === "all" || article.dataset.category === category) {
+                article.style.display = "block";
+              } else {
+                article.style.display = "none";
+              }
+            });
+          }
+        });
+      });
+
+      // Load more articles
+      document.getElementById("loadMoreBtn").addEventListener("click", () => {
+        const container = document.getElementById("articlesContainer");
+        mockArticles.forEach((article) => {
+          const articleElement = document.createElement("div");
+          articleElement.className = "col-md-4 mb-4";
+          articleElement.innerHTML = `
+            <div class="card" data-category="${article.category}">
+              <img src="${article.image}" class="card-img-top article-img" alt="${article.title}" />
+              <div class="card-body">
+                <h5 class="card-title">${article.title}</h5>
+                <p class="card-text">${article.summary}</p>
+                <div>
+                  <a href="detail.html?title=${encodeURIComponent(article.title)}&image=${encodeURIComponent(article.image)}&author=${encodeURIComponent(article.author)}&date=${encodeURIComponent(article.date)}&content=${encodeURIComponent(article.content)}" class="btn btn-outline-primary btn-sm">Read More</a>
+                  <button class="btn btn-outline-warning bookmark-btn" data-title="${article.title}" data-image="${article.image}" data-author="${article.author}" data-date="${article.date}" data-content="${article.content}">
+                    <i class="bi bi-bookmark"></i> Bookmark
+                  </button>
+                  <button class="btn btn-outline-info share-btn" data-title="${article.title}">
+                    <i class="bi bi-share"></i> Share
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          container.appendChild(articleElement);
+        });
+        document.getElementById("loadMoreBtn").disabled = true;
+      });
+
+      // Event delegation for bookmark and share buttons
+      document.addEventListener("click", (e) => {
+        if (e.target.closest(".bookmark-btn")) {
+          toggleBookmark(e.target.closest(".bookmark-btn"));
+        }
+        if (e.target.closest(".share-btn")) {
+          shareArticle(e.target.closest(".share-btn").dataset.title);
+        }
+      });
+
+      // Dark mode toggle
+      document.getElementById("darkModeToggle").addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        const isDarkMode = document.body.classList.contains("dark-mode");
+        localStorage.setItem("darkMode", isDarkMode);
+        document.getElementById("darkModeToggle").textContent = isDarkMode
+          ? "Toggle Light Mode"
+          : "Toggle Dark Mode";
+      });
+
+      // Load dark mode preference and bookmarks on page load
+      if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+        document.getElementById("darkModeToggle").textContent = "Toggle Light Mode";
+      }
+      loadBookmarks();
+    </script>
+  </body>
+</html>
