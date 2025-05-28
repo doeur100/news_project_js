@@ -1,13 +1,14 @@
 
 const container = document.getElementById("articlesContainer");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
+const loadLessBtn = document.getElementById("loadLessBtn");
 const articlesPerPage = 6; // Number of articles to show per load
 let currentArticleIndex = 0; // Track the current number of displayed articles
 
 // Mock data for additional articles
       const mockArticles = [
         {
-          title: "News Title Four",
+          title: "News Title 1",
           summary: "Another exciting news summary goes here...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "business",
@@ -16,7 +17,7 @@ let currentArticleIndex = 0; // Track the current number of displayed articles
           content: "Full content for News Title Four. This article explores the latest business trends...",
         },
         {
-          title: "News Title Five",
+          title: "News Title 2",
           summary: "More news content to engage readers...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "entertainment",
@@ -25,7 +26,7 @@ let currentArticleIndex = 0; // Track the current number of displayed articles
           content: "Full content for News Title Five. This article dives into entertainment news...",
         },
         {
-          title: "News Title Six",
+          title: "News Title 3",
           summary: "Latest updates in the news world...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "technology",
@@ -34,7 +35,7 @@ let currentArticleIndex = 0; // Track the current number of displayed articles
           content: "Full content for News Title Six. This article covers new tech innovations...",
         },
         {
-          title: "News Title Six",
+          title: "News Title 4",
           summary: "Latest updates in the news world...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "technology",
@@ -43,7 +44,7 @@ let currentArticleIndex = 0; // Track the current number of displayed articles
           content: "Full content for News Title Six. This article covers new tech innovations...",
         },
         {
-          title: "News Title Six",
+          title: "News Title 5",
           summary: "Latest updates in the news world...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "technology",
@@ -52,7 +53,7 @@ let currentArticleIndex = 0; // Track the current number of displayed articles
           content: "Full content for News Title Six. This article covers new tech innovations...",
         },
         {
-          title: "News Title Six",
+          title: "News Title 6",
           summary: "Latest updates in the news world...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "technology",
@@ -61,7 +62,25 @@ let currentArticleIndex = 0; // Track the current number of displayed articles
           content: "Full content for News Title Six. This article covers new tech innovations...",
         },
         {
-          title: "News Title Six",
+          title: "News Title 7",
+          summary: "Latest updates in the news world...",
+          image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
+          category: "technology",
+          author: "Emma Davis",
+          date: "May 22, 2025",
+          content: "Full content for News Title Six. This article covers new tech innovations...",
+        },
+        {
+          title: "News Title 8",
+          summary: "Latest updates in the news world...",
+          image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
+          category: "technology",
+          author: "Emma Davis",
+          date: "May 22, 2025",
+          content: "Full content for News Title Six. This article covers new tech innovations...",
+        },
+        {
+          title: "News Title 9",
           summary: "Latest updates in the news world...",
           image: "https://t4.ftcdn.net/jpg/02/09/53/11/360_F_209531103_vL5MaF5fWcdpVcXk5yREBk3KMcXE0X7m.jpg",
           category: "technology",
@@ -188,6 +207,9 @@ function renderArticles(startIndex, count) {
   const endIndex = Math.min(startIndex + count, mockArticles.length);
   const articlesToShow = mockArticles.slice(startIndex, endIndex);
 
+  // Clear the container before appending new articles
+  container.innerHTML = "";
+
   articlesToShow.forEach((article) => {
     const articleElement = document.createElement("div");
     articleElement.className = "col-md-4 mb-4";
@@ -215,8 +237,9 @@ function renderArticles(startIndex, count) {
   // Update the current index
   currentArticleIndex = endIndex;
 
-  // Show or hide the "Load More" button
+  // Show or hide the "Load More" and "Load Less" buttons
   loadMoreBtn.style.display = currentArticleIndex < mockArticles.length ? 'block' : 'none';
+  loadLessBtn.style.display = currentArticleIndex > articlesPerPage ? 'block' : 'none';
 }
 
 // Initial rendering of articles
@@ -224,32 +247,36 @@ renderArticles(0, articlesPerPage);
 
 // Event listener for the "Load More" button
 loadMoreBtn.addEventListener('click', () => {
-  renderArticles(currentArticleIndex, articlesPerPage);
+  renderArticles(0, currentArticleIndex + articlesPerPage);
 });
-  
-      // Event delegation for bookmark and share buttons
-      document.addEventListener("click", (e) => {
-        if (e.target.closest(".bookmark-btn")) {
-          toggleBookmark(e.target.closest(".bookmark-btn"));
+// Event listener for the "Load Less" button
+loadLessBtn.addEventListener('click', () => {
+  currentArticleIndex = 0; // reset the index
+  renderArticles(0, articlesPerPage); // re-render only the first 6
+});
+// Event delegation for bookmark and share buttons
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".bookmark-btn")) {
+      toggleBookmark(e.target.closest(".bookmark-btn"));
         }
-        if (e.target.closest(".share-btn")) {
-          shareArticle(e.target.closest(".share-btn").dataset.title);
-        }
-      });
+  if (e.target.closest(".share-btn")) {
+      shareArticle(e.target.closest(".share-btn").dataset.title);
+    }
+  });
 
-      // Dark mode toggle
-      document.getElementById("darkModeToggle").addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        const isDarkMode = document.body.classList.contains("dark-mode");
-        localStorage.setItem("darkMode", isDarkMode);
-        document.getElementById("darkModeToggle").textContent = isDarkMode
-          ? "Toggle Light Mode"
-          : "Toggle Dark Mode";
-      });
+// Dark mode toggle
+document.getElementById("darkModeToggle").addEventListener("click", () => {
+document.body.classList.toggle("dark-mode");
+const isDarkMode = document.body.classList.contains("dark-mode");
+localStorage.setItem("darkMode", isDarkMode);
+document.getElementById("darkModeToggle").textContent = isDarkMode
+    ? "Toggle Light Mode"
+    : "Toggle Dark Mode";
+  });
 
-      // Load dark mode preference and bookmarks on page load
-      if (localStorage.getItem("darkMode") === "true") {
+// Load dark mode preference and bookmarks on page load
+  if (localStorage.getItem("darkMode") === "true") {
         document.body.classList.add("dark-mode");
         document.getElementById("darkModeToggle").textContent = "Toggle Light Mode";
-      }
-      loadBookmarks();
+    }
+loadBookmarks();
